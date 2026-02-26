@@ -1,0 +1,23 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+button{
+    border: none;
+    background-color: yellow;
+    box-shadow: 10 px,10 px, 0, 0;
+    border-radius: 5px, 5px,5px,0px;
+}
+button:hover{
+    background-color: rgb(0, 255, 234);
+    color: #000;
+}
+header{
+    background-color: aqua;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+footer{
+    background-color: blanchedalmond;
+    align-items: flex-end;
+}
