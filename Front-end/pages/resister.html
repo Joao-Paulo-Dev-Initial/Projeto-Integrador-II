@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/resister.css">
+    <title>Formulario de cadastro</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form-image">
+            <img src="../imgs/undraw_online-shopping_hgf6.svg" alt="Imagem de cadastro">
+        </div>
+        <div class="form">
+            <form action="#">
+                <div class="form-header">
+                    <div class="title">
+                        <h1>Cadastre-se</h1>
+                    </div>
+                    <div class="login-buttom">
+                        <button><a href="#">Entrar</a></button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="name">Nome Completo</label>
+                        <input id="name" type="text" placeholder="Digite seu nome completo" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" placeholder="Digite seu email" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="password">Senha</label>
+                        <input id="password" type="password" placeholder="Digite sua senha" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="confirm-password">Confirmar Senha</label>
+                        <input id="confirm-password" type="password" placeholder="Confirme sua senha" required>
+                    </div>
+                </div>
+                <div class="type">
+                    <div class="type-title">
+                        <h6>Tipo de usuário</h6>
+                    </div>
+
+                    <div class="type-group">
+                        <input type="radio" id="admin" name="type" value="admin">
+                        <label for="admin">Feirante</label>
+                        <input type="radio" id="user" name="type" value="user">
+                        <label for="user">Usuário</label>
+                    </div>
+                </div>
+
+                <div class="continue-button">
+                    <button type="submit">Continuar</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    
+</body>
+</html>

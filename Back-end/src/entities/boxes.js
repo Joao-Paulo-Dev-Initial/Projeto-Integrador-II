@@ -1,7 +1,15 @@
 const database = require("../Database/database");
 
 async function findAllBoxes() {
-    const result = await database.query("SELECT id, numero_box, nome_box, descricao, categoria, horario_func, contato FROM box");
+    const result = await database.query(`SELECT 
+         id,
+         numero_box, 
+         nome_box, 
+         descricao, 
+         categoria, 
+         horario_func, 
+         contato 
+         FROM box`);
     return result.rows;
 }
 
@@ -44,9 +52,7 @@ async function updateBox(id, box) {
 }
 
 async function deleteBox(id) {
-    await database.query("DELETE FROM box WHERE id = $1", [id]);
+    await database.query(`DELETE FROM box WHERE id = $1`, [id]);
 }
-
-
 
 module.exports = { findAllBoxes, createBox, updateBox, deleteBox }

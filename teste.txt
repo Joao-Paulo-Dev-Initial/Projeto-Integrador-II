@@ -1,0 +1,55 @@
+TESTAR ADICIONAR FAVORITO (POST)
+http://localhost:8080/favoritos
+{
+  "usuario_id": 1,
+  "box_id": 1,
+  "observacao": "Muito bom"
+}
+
+
+TESTAR LISTAR FAVORITOS (GET)
+http://localhost:8080/favoritos/1
+
+resposta esperada[
+  {
+    "id": 1,
+    "observacao": "Box muito organizado e limpo",
+    "box_id": 1,
+    "numero_box": 10,
+    "descricao": "descrição da box"
+  }
+]
+
+TESTAR REMOVER FAVORITO (DELETE)
+http://localhost:8080/favoritos/delete/1
+
+Resposta esperada:
+{
+  "message": "Favorito removido com sucesso."
+}
+
+
+
+TESTAR REGISTRAR USUÁRIO (POST)
+http://localhost:8080/users/register
+
+    {
+        "nome": "Carlos",
+        "email": "skdakd@gmail.com",
+        "senha": "23333",
+        "tipo": "feirante",
+    }
+
+
+TESTAR CRIAR BOX (POST)
+http://localhost:8080/boxes
+
+    {
+        "numero_box": "321",
+        "nome_box": "barraquinha",
+        "descricao": "vende ouro",
+        "categoria": "ouro",
+        "horario_func": "15:00",
+        "contato": "84284238482",
+        "usuario_id": 1
+    }
