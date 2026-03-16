@@ -41,6 +41,15 @@ http://localhost:8080/users/register
     }
 
 
+TESTAR LOGAR USUÁRIO (POST)
+http://localhost:8080/users/login
+
+    {
+      "email": "dksdsjdj@gmail.com",
+      "senha": "q32323"
+    }
+
+
 TESTAR CRIAR BOX (POST)
 http://localhost:8080/boxes
 
@@ -52,4 +61,17 @@ http://localhost:8080/boxes
         "horario_func": "15:00",
         "contato": "84284238482",
         "usuario_id": 1
+    }
+
+
+TESTAR ATUALIZAR BOX (PUT)
+http://localhost:8080/boxes/:id
+
+    {
+        "numero_box": "321",
+        "nome_box": "barraquinha",
+        "descricao": "vende ouro",
+        "categoria": "ouro",
+        "horario_func": "15:00",
+        "contato": "84284238482"
     }
