@@ -10,30 +10,29 @@
 
     <link rel="stylesheet" href="../styles/components/header.css">
     <link rel="stylesheet" href="../styles/components/buttons.css">
-    <link rel="stylesheet" href="../styles/components/home.css">
     <link rel="stylesheet" href="../styles/components/menu.css">
     <link rel="stylesheet" href="../styles/components/footer.css">
     <link rel="stylesheet" href="../styles/components/user-menu.css">
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <title>Home - TáNaBox</title>
+    <title>Favoritos - TáNaBox</title>
 </head>
-<body>
-        <header>
+<body>  
+     <header>
             <nav id="navBar">
-                <i class="fa-solid fa-box-archive" id="nav_logo">BOXES</i>
+                <i class="fa-solid fa-bookmark" id="nav_logo">FAVORITOS</i>
 
                 <ul id="nav_list">
-                    <li class="nav-item active">
-                        <a href="#home">Início</a>
+                    <li class="nav-item">
+                        <a href="../pages/home.html">Início</a>
                     </li>
 
                     <li class="nav-item">
                         <a href="../pages/myBox.html">Meu Box</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="../pages/favorites.html">Favoritos</a>
+                    <li class="nav-item active">
+                        <a href="#favoritos">Favoritos</a>
                     </li>
                 </ul>
 
@@ -48,8 +47,6 @@
                 </div>
 
                 </div>
-                
-
                 <button id="mobile_btn">
                     <i class="fa-solid fa-bars"></i>
                 </button>
@@ -58,7 +55,7 @@
             <div id="mobile_menu">
                 <ul id="mobile_nav_list">
                     <li class="nav-item">
-                        <a href="#home">Início</a>
+                        <a href="../pages/home.html">Início</a>
                     </li>
 
                     <li class="nav-item">
@@ -66,52 +63,33 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="../pages/favorites.html">Favoritos</a>
+                        <a href="#favoritos">Favoritos</a>
                     </li>
                 </ul>
 
-                <button class="btn-default">
-                    Logout
+                <div class="user-menu">
+                    <button class="btn-default">
+                    <i class="fa-solid fa-circle-user"></i>
+                    Fulano
                 </button>
+
+                <div class="user-dropdown">
+                    <a href="#">Sair</a>
+                </div>
+
+                </div>
 
             </div>
         </header>
 
-        <main id="content">
-            <section id="home">
-
-                <div class="shape"></div>
-                <div id="cta">
-                    <h1 class="title">
-                        Tá na praia? 
-                        <span>TáNaBox!</span>
-                    </h1>
-
-                    <p class="description">
-                        Descubra boxes da feirinha da Beira-Mar, encontre produtos locais e salve seus favoritos.
-                    </p>
-
-                    <div id="cta_buttons">
-                        <a href="#boxes" class="btn-default">
-                            Ver Boxes
-                        </a>
-                        <a href="boxInfo.html" id="tanabox-add-box-btn" class="btn-default" hidden>Adicionar box</a>
-                </div>
-
-                <div id="banner">
-                    <img src="../imgs/TáNaBox-logo.svg" alt="">
-                </div>
-
-            </section>
-
-            <section id="menu">
-                <h2 class="section-title">Boxes</h2>
+        <section id="menu">
+                <h2 class="section-title">Favoritos</h2>
                 <h3 class="section-subtitle">Veja mais informações!</h3>
 
                 <div id="boxes">
                     <div class="box">
                         <div class="box-fav">
-                            <i class="fa-solid fa-box"></i>
+                            <i class="fa-solid fa-bookmark"></i>
                         </div>
 
                         <img src="../imgs/exemploBox.png" class="box-image" alt="">
@@ -130,7 +108,7 @@
 
                      <div class="box">
                         <div class="box-fav">
-                            <i class="fa-solid fa-box"></i>
+                            <i class="fa-solid fa-bookmark"></i>
                         </div>
 
                         <img src="../imgs/exemploBox.png" class="box-image" alt="">
@@ -149,7 +127,7 @@
 
                      <div class="box">
                         <div class="box-fav">
-                            <i class="fa-solid fa-box"></i>
+                            <i class="fa-solid fa-bookmark"></i>
                         </div>
 
                         <img src="../imgs/exemploBox.png" class="box-image" alt="">
@@ -168,7 +146,7 @@
 
                      <div class="box">
                         <div class="box-fav">
-                            <i class="fa-solid fa-box"></i>
+                            <i class="fa-solid fa-bookmark"></i>
                         </div>
 
                         <img src="../imgs/exemploBox.png" class="box-image" alt="">
@@ -185,6 +163,7 @@
 
                     </div>
 
+                    
                 </div>
             </section>
         </main>
@@ -199,8 +178,8 @@
             </div>
         </footer>
 
-    <script src="../scripts/scriptHeader.js"></script>
-    <script src="../scripts/scriptUserMenu.js"></script>
-    <script src="../scripts/scriptLogCad.js"></script>
+        <script src="../scripts/scriptHeader.js"></script>
+        <script src="../scripts/scriptUserMenu.js"></script>
+        <script src="../scripts/scriptLogCad.js"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #EEF3FF;
+    background: #e0cea0;
 }
 
 .container {
@@ -25,7 +25,7 @@ body {
 }
 
 #container-flip{
-  color:#ccc;
+  color:#fff;
   text-transform: uppercase;
   font-size: 30px;
   font-weight:bold;
@@ -59,7 +59,7 @@ body {
 }
 
 #flip div:last-child div {
-  background:#06D6A0; 
+  background:#C1C700; 
 }
 
 @keyframes show {
@@ -80,7 +80,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #1B263B;
+    background-color:#bda671;
     padding: 2rem;
     gap: 1px;
 }
@@ -113,14 +113,15 @@ body {
 
 .login-buttom button {
     border: none;
-    background-color: #6c63ff;
+    background-color: #e9a209;
     padding: 0.4rem 1rem;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color .3s ease;
 }
 
 .login-buttom button:hover{
-    background-color: #6b63fff1;
+    background-color: #f8d477;
 }
 
 .login-buttom button a {
@@ -134,7 +135,7 @@ body {
     display: block;
     width: 5rem;
     height: 0.3rem;
-    background-color: #6c63ff;
+    background-color: #e9a209;
     margin-top: 0 auto;
     position: absolute;
     border-radius: 10px;
@@ -150,6 +151,7 @@ body {
 .input-box {
     display: flex;
     flex-direction: column;
+    padding: 2px;
     margin-bottom: 1.1rem;
 }
 
@@ -163,7 +165,7 @@ body {
 }
 
 .input-box input:hover {
-    background-color: #eeeeee75;
+    background-color: #f8d477;
 }
 
 .input-box input:focus-visible {
@@ -194,15 +196,16 @@ body {
     width: 100%;
     margin-top: 2.5rem;
     border: none;
-    background-color: #6c63ff;
+    background-color: #e9a209;
     padding: 0.62rem;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color .3s ease;
 
 }
 
 .continue-button button:hover {
-    background-color: #6b63fff1;
+    background-color: #f8d477;
 }
 
 .continue-button button a {

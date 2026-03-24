@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="shortcut icon" href="../imgs/TáNaBox-logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="../styles/global/style.css">
+
+    <link rel="stylesheet" href="../styles/components/header.css">
+    <link rel="stylesheet" href="../styles/components/buttons.css">
+    <link rel="stylesheet" href="../styles/components/home.css">
+    <link rel="stylesheet" href="../styles/components/menu.css">
+    <link rel="stylesheet" href="../styles/components/footer.css">
+    <link rel="stylesheet" href="../styles/components/user-menu.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+<title>Informações - TáNaBox</title>
+</head>
+
+<body>
+
+<header>
+            <nav id="navBar">
+                <i class="fa-solid fa-box-archive" id="nav_logo">BOXES</i>
+
+                <ul id="nav_list">
+                    <li class="nav-item active">
+                        <a href="#home">Início</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#menu">Boxes</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="../pages/favorites.html">Favoritos</a>
+                    </li>
+                </ul>
+
+                <div class="user-menu">
+                    <button class="btn-default">
+                    <i class="fa-solid fa-circle-user"></i>
+                    Fulano
+                </button>
+
+                <div class="user-dropdown">
+                    <a href="#">Sair</a>
+                </div>
+
+                </div>
+                
+
+                <button id="mobile_btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </nav>
+
+            <div id="mobile_menu">
+                <ul id="mobile_nav_list">
+                    <li class="nav-item">
+                        <a href="#home">Início</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="../pages/myBox.html">Meu Box</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="../pages/favorites.html">Favoritos</a>
+                    </li>
+                </ul>
+
+                <button class="btn-default">
+                    Logout
+                </button>
+
+            </div>
+        </header>
+
+<main id="box_info">
+
+    <section class="box-container">
+
+        <div class="box-image">
+            <img src="../imgs/TáNaBox-logo.svg" alt="Imagem da Box">
+        </div>
+
+        <div class="box-details">
+
+            <h1 class="box-title">Box do Artesanato</h1>
+
+            <p class="box-description">
+                Esta box oferece diversos produtos artesanais produzidos por vendedores locais da feirinha da Beira-Mar.
+                Aqui você encontra lembranças, decoração, peças culturais e itens feitos à mão que representam a cultura da região.
+            </p>
+
+            <div class="box-data">
+                <p><i class="fa-solid fa-location-dot"></i> Beira-Mar – Box 23</p>
+                <p><i class="fa-solid fa-user"></i> Maria Silva</p>
+                <p><i class="fa-solid fa-phone"></i> (85) 98444-2342</p>
+                <p><i class="fa-solid fa-clock"></i> 17h às 22h</p>
+            </div>
+
+            <div class="box-buttons">
+                <button class="btn-default">
+                    <i class="fa-solid fa-heart"></i> Favoritar
+                </button>
+
+                <a href="https://wa.me/5585984442342" target="_blank">
+                    <button class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                    </button>
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PRODUTOS -->
+    <section class="products-section">
+
+        <h2>Produtos da Box</h2>
+
+        <div class="products-container">
+
+            <div class="product-card">
+                <img src="../imgs/TáNaBox-logo.svg" alt="Produto 1">
+                <h3>Artesanato em Palha</h3>
+                <p>R$ 25,00</p>
+            </div>
+
+            <div class="product-card">
+                <img src="../imgs/TáNaBox-logo.svg" alt="Produto 2">
+                <h3>Escultura de Madeira</h3>
+                <p>R$ 60,00</p>
+            </div>
+
+            <div class="product-card">
+                <img src="../imgs/TáNaBox-logo.svg" alt="Produto 3">
+                <h3>Pulseira Artesanal</h3>
+                <p>R$ 15,00</p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <img src="../imgs/wave-footer.svg">
+
+    <div id="footer_items">
+        <span id="copyright">
+            © 2026 Grupo TáNaBox
+        </span>
+    </div>
+</footer>
+
+    <script src="../scripts/scriptHeader.js"></script>
+    <script src="../scripts/scriptUserMenu.js"></script>
+    <script src="../scripts/scriptLogCad.js"></script>
+
+</body>
+</html>

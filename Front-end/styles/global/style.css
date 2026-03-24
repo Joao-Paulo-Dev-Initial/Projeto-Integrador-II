@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #e0cea0;
+}
+
+section {
+    padding: 28px 8%;
+}
+
+.section-title {
+    color: #e9a209;
+    font-size: 1.564rem;
+}
+
+.section-subtitle {
+    font-size: 2.1875rem;
+}
+
+/*box*/
+
+.box-container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    padding: 40px;
+    flex-wrap: wrap;
+}
+
+.box-image img {
+    width: 400px;
+    max-width: 100%;
+    border-radius: 20px;
+}
+
+.mybox-section button{
+    margin-top: 10px;
+}
+
+.mybox-section {
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.mybox-section h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#preview {
+    cursor: default;
+}
+
+.box-image-edit img {
+    max-width: 250px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.box-details {
+    max-width: 500px;
+}
+
+/* PRODUTOS */
+
+.products-section {
+    padding: 40px;
+}
+
+.products-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    width: 200px;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Criar box */
+
+.create-box{
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.create-box h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.box-form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label{
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    border-color: #2DAAE1;
+}
+
+textarea{
+    resize: none;
+    height: 100px;
+}
+
+.create-box button{
+    margin-top: 10px;
+}

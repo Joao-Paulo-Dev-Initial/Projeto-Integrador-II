@@ -3,56 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/Front-end/imgs/logo.png" type="image/png">
-    <title>ta na box</title>
+    <link rel="shortcut icon" href="../imgs/TáNaBox-logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="../styles/global/style.css">
+
+    <link rel="stylesheet" href="../styles/components/header.css">
+    <link rel="stylesheet" href="../styles/components/buttons.css">
+    <link rel="stylesheet" href="../styles/components/home.css">
+    <link rel="stylesheet" href="../styles/components/footer.css">
+
+    <title>TáNaBox</title>
 </head>
 <body>
-    <header class="cabecario">
-        <img src="/Front-end/imgs/logo.png" alt="">
-        <h2>bem vindos ao ta no box</h2>
-        <button>login</button>
-        <button>cadastro</button>
+    <header>
+        <nav id="navBar">
+            <i class="fa-solid fa-sun" id="nav_logo">TaNaBox</i>
+
+            <ul id="nav_list">
+                <li class="nav-item active">
+                        <a href="#home">Início</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#about">Sobre nós</a>
+                    </li>
+
+                   
+                        <a href="../pages/register.html">
+                             <button class="btn-default">
+                                Cadastre-se
+                                </button>
+                        </a>
+            </ul>
+        </nav>
+        
     </header>
 
-        <div class="inf-cixa">
-    <div class="informacoes">
-        <h2>quem nos somos?</h2>
-        <br>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore aut blanditiis consequuntur doloribus necessitatibus earum incidunt deleniti voluptatem cupiditate, fugit voluptates quaerat, facere ipsa mollitia architecto provident excepturi quam laboriosam.</p>
-    </div>
-</div>
 
-    <div class="geral">
-    <div class="box">
-        <img src="" alt="">
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque optio consequuntur assumenda quidem quia commodi consectetur! Dolores ullam fugit fugiat excepturi, omnis ipsum obcaecati architecto ratione quasi placeat aliquid. Nemo.</p>
-        </tr>
-        <button><img src="/Front-end/imgs/strla.svg" alt="favoritos"></button>
+    <main id="content">
+            <section id="home">
+
+                <div class="shape"></div>
+                <div id="cta">
+                    <h1 class="title">
+                        Tá na praia? 
+                        <span>TáNaBox!</span>
+                    </h1>
+
+                    <p class="description">
+                        Descubra boxes da feirinha da Beira-Mar, encontre produtos locais e salve seus favoritos.
+                    </p>
+
+                    <div id="cta_buttons">
+                        <a href="../pages/register.html" class="btn-default">
+                            Cadastre-se aqui!
+                        </a>
+                        </div>
+
+                        <div id="banner">
+                    <img src="../imgs/TáNaBox-logo.svg" alt="">
+                </div>
+
+            </section>
+                
+            <section id="about">
+                <div id="cta">
+                    <h1 class="title">
+                        Sobre
+                        <span>Nós</span>
+                    </h1>
+
+                    <p class="description">
+                        TáNaBox é um projeto acadêmico feito com a intenção de auxiliar boxes da feirinha da Beira-Mar
+                        em Fortaleza, servindo como uma vitrine digital com as informações dos boxes. O sistema também
+                        permite você salvar seus boxes favoritos, para auxiliar você quando for fazer uma visita à feirinha
+                        mais uma vez!
+                    </p>
+                </div>
+            </section>
+
+            <footer>
+    <img src="../imgs/wave-footer.svg">
+
+    <div id="footer_items">
+        <span id="copyright">
+            © 2026 Grupo TáNaBox
+        </span>
     </div>
-    <div class="box">
-        <img src="" alt="">
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque optio consequuntur assumenda quidem quia commodi consectetur! Dolores ullam fugit fugiat excepturi, omnis ipsum obcaecati architecto ratione quasi placeat aliquid. Nemo.</p>
-        </tr>
-        <button><img src="/Front-end/imgs/strla.svg" alt="favoritos"></button>
-    </div>
-    <div class="box">
-        <img src="" alt="">
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque optio consequuntur assumenda quidem quia commodi consectetur! Dolores ullam fugit fugiat excepturi, omnis ipsum obcaecati architecto ratione quasi placeat aliquid. Nemo.</p>
-        </tr>
-        <button><img src="/Front-end/imgs/strla.svg" alt="favoritos"></button>
-    </div>
-    <div class="box">
-        <img src="" alt="">
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque optio consequuntur assumenda quidem quia commodi consectetur! Dolores ullam fugit fugiat excepturi, omnis ipsum obcaecati architecto ratione quasi placeat aliquid. Nemo.</p>
-        </tr>
-        <button><img src="/Front-end/imgs/strla.svg" alt="favoritos"></button>
-    </div>
-</div>
-    <footer>
-        <p>&copy;Todos os direitos reservados.</p>
-        <p>joel,gilherme,bruno,joão.m,joão.p</p>
-    </footer>
-    <link rel="stylesheet" href="../styles/style.css">
-    <script src="../scripts/script"></script>
+</footer>
+    
+
+    <script src="../scripts/scriptHeader.js"></script>
 </body>
 </html>
