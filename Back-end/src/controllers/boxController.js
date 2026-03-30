@@ -9,12 +9,70 @@ async function getAllBoxes(request, reply) {
   }
 }
 
-async function createBox(request, reply) {
+async function getBoxById(request, reply) {
   try {
-    const newBox = await boxes.createBox(request.body);
-    reply.status(201).json(newBox);
+    const { id } = request.params;
+    const box = await boxes.findBoxById(id);
+
+    if (!box) {
+      return reply.status(404).json({ message: "Box não encontrado" });
+    }
+
+    reply.json(box);
   } catch (error) {
     reply.status(404).json({ error: error.message });
+  }
+}
+
+async function createBox(request, reply) {
+  try {
+
+      console.log("==== BODY RECEBIDO ====");
+      console.log(request.body); // aqui vemos todos os campos que chegaram do frontend
+      console.log("==== ARQUIVO RECEBIDO ====");
+      console.log(request.file); // aqui vemos se Multer capturou a imagem
+
+      if (request.file) {
+    console.log("Arquivo recebido pelo multer:", request.file);
+    console.log("Nome do arquivo:", request.file.filename); // <- aqui é o que você quer
+} else {
+    console.log("Nenhum arquivo recebido!");
+}
+
+    const {usuario_id, numero_box, nome_box, descricao, categoria, horario_func, contato} = request.body;
+
+    if(!usuario_id || !numero_box || !nome_box) {
+      return reply.status(400).json({error: "usuario_id obrigatório"});
+    }
+
+    const userIdNumber = Number(usuario_id);
+    const existingBox = await boxes.findBoxByUserId(usuario_id);
+
+    if(existingBox) {
+      return reply.status(400).json({
+        message: "Você já possui uma box cadastrada!"
+      });
+    }
+
+    const imageUrl = request.file
+      ? `/uploads/${request.file.filename}`
+      : undefined;
+    
+    const newBox = await boxes.createBox({
+      numero_box,
+          nome_box,
+          descricao,
+          categoria,
+          horario_func,
+          contato,
+          usuario_id: userIdNumber,
+          imagem: imageUrl
+    });
+
+    reply.status(201).json(newBox);
+  } catch (error) {
+    console.log("Erro ao criar box: ", error)
+    reply.status(500).json({ error: error.message });
   }
 }
 
@@ -22,7 +80,14 @@ async function updateBox(request, reply) {
     try {
     const { id } = request.params;
 
-    const updatedBox = await boxes.updateBox(id, request.body);
+    const imageUrl = request.file
+      ? `/uploads/${request.file.filename}`
+      : null;
+
+    const updatedBox = await boxes.updateBox(id, {
+      ...request.body,
+      imagem: imageUrl
+    });
 
     if (!updatedBox) {
       return reply.status(404).json({ message: "Box não encontrado" });
@@ -44,4 +109,20 @@ async function deleteBox(request, reply) {
   }
 }
 
-module.exports = { getAllBoxes, createBox, updateBox, deleteBox };
+async function getBoxByUser(request, reply) {
+    const { id } = request.params;
+
+    try {
+        const box = await boxes.findBoxByUserId(id);
+
+        if (!box) {
+            return reply.status(404).json({ message: "Usuário não possui box" });
+        }
+
+        reply.json(box);
+    } catch (error) {
+        reply.status(500).json({ error: error.message });
+    }
+}
+
+module.exports = { getAllBoxes, getBoxById, createBox, updateBox, deleteBox, getBoxByUser };

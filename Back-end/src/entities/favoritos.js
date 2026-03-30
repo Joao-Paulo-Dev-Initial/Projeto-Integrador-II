@@ -20,10 +20,12 @@ async function findByUserId(usuario_id) {
     const result = await database.query(
         `SELECT 
             f.id,
+            f.box_id,
             f.observacao,
             b.numero_box,
             b.nome_box,
-            b.descricao
+            b.descricao,
+            b.imagem
          FROM favorito f
          JOIN box b ON b.id = f.box_id
          WHERE f.usuario_id = $1`,

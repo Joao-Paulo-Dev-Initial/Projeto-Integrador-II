@@ -60,7 +60,10 @@ async function loginUser(request, reply) {
         {expiresIn: "1h"}
        );
 
-       reply.json({token});
+       reply.json({
+        token,
+        nome: user.nome
+    });
     } catch (error) {
         reply.status(404).json({error: error.message});
     }

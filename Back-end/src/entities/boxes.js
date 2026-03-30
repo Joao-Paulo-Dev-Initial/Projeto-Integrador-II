@@ -8,13 +8,32 @@ async function findAllBoxes() {
          descricao, 
          categoria, 
          horario_func, 
-         contato 
+         contato,
+         imagem 
          FROM box`);
     return result.rows;
 }
 
+async function findBoxById(id) {
+    const result = await database.query(
+        `SELECT 
+            id,
+            numero_box, 
+            nome_box, 
+            descricao, 
+            categoria, 
+            horario_func, 
+            contato,
+            imagem
+        FROM box
+        WHERE id = $1`,
+        [id]
+    );
+    return result.rows[0];
+}
+
 async function createBox(box) {
-    const { numero_box, nome_box, descricao, categoria, horario_func, contato, usuario_id } = box;
+    const { numero_box, nome_box, descricao, categoria, horario_func, contato, usuario_id, imagem } = box;
 
     const result = await database.query(
     `INSERT INTO box (
@@ -24,16 +43,24 @@ async function createBox(box) {
     categoria, 
     horario_func, 
     contato, 
-    usuario_id
-    ) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
-    [numero_box, nome_box, descricao, categoria, horario_func, contato, usuario_id]
+    usuario_id,
+    imagem
+    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
+    [numero_box, nome_box, descricao, categoria, horario_func, contato, usuario_id, imagem]
   );
 
   return result.rows[0];
 }
 
 async function updateBox(id, box) {
-    const { numero_box, nome_box, descricao, categoria, horario_func, contato} = box;
+    const { numero_box, nome_box, descricao, categoria, horario_func, contato, imagem} = box;
+
+    const current = await database.query(
+        `SELECT imagem FROM box WHERE id = $1`, [id]
+    );
+
+    const imagemAtual = current.rows[0]?.imagem;
+    const imagemFinal = imagem || imagemAtual;
 
     const result = await database.query(
         `UPDATE box SET 
@@ -42,10 +69,11 @@ async function updateBox(id, box) {
         descricao = $3, 
         categoria = $4, 
         horario_func = $5, 
-        contato = $6 
-        WHERE id=$7
-        RETURNING id, numero_box, nome_box, descricao, categoria, horario_func, contato`,
-        [numero_box, nome_box, descricao, categoria, horario_func, contato, id]
+        contato = $6,
+        imagem = $7
+        WHERE id=$8
+        RETURNING *`,
+        [numero_box, nome_box, descricao, categoria, horario_func, contato, imagemFinal, id]
     );
 
     return result.rows[0];
@@ -55,4 +83,24 @@ async function deleteBox(id) {
     await database.query(`DELETE FROM box WHERE id = $1`, [id]);
 }
 
-module.exports = { findAllBoxes, createBox, updateBox, deleteBox }
+async function findBoxByUserId(usuario_id) {
+    const result = await database.query(
+        `SELECT 
+            id,
+            numero_box, 
+            nome_box, 
+            descricao, 
+            categoria, 
+            horario_func, 
+            contato,
+            usuario_id,
+            imagem
+        FROM box
+        WHERE usuario_id = $1`,
+        [usuario_id]
+    );
+
+    return result.rows[0];
+}
+
+module.exports = { findAllBoxes, findBoxById, createBox, updateBox, deleteBox, findBoxByUserId }

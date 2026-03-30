@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../styles/components/user-menu.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <title>Criar Box</title>
 </head>
@@ -28,12 +29,8 @@
                 <i class="fa-solid fa-box-archive" id="nav_logo">BOXES</i>
 
                 <ul id="nav_list">
-                    <li class="nav-item active">
-                        <a href="#home">Início</a>
-                    </li>
-
                     <li class="nav-item">
-                        <a href="#menu">Boxes</a>
+                        <a href="../pages/home.html">Início</a>
                     </li>
 
                     <li class="nav-item">
@@ -62,11 +59,7 @@
             <div id="mobile_menu">
                 <ul id="mobile_nav_list">
                     <li class="nav-item">
-                        <a href="#home">Início</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#menu">Boxes</a>
+                        <a href="../pages/home.html">Início</a>
                     </li>
 
                     <li class="nav-item">
@@ -86,26 +79,31 @@
 
     <h1>Criar sua Box</h1>
 
-    <form class="box-form">
+    <form class="box-form" id="createBoxForm">
+
+        <div class="form-group">
+            <label>Imagem da Box</label>
+            <input id="imagem" name= "imagem" type="file" accept="image/*">
+        </div>
 
         <div class="form-group">
             <label>Número da Box</label>
-            <input type="number" placeholder="Ex: 23" required>
+            <input id="numero_box" type="number" placeholder="Ex: 23" required>
         </div>
 
         <div class="form-group">
             <label>Nome da Box</label>
-            <input type="text" placeholder="Ex: Box do Artesanato" required>
+            <input id="nome_box" type="text" placeholder="Ex: Box do Artesanato" required>
         </div>
 
         <div class="form-group">
             <label>Descrição</label>
-            <textarea placeholder="Descreva sua box..." required></textarea>
+            <textarea id="descricao" placeholder="Descreva sua box..." required></textarea>
         </div>
 
         <div class="form-group">
             <label>Categoria</label>
-            <select required>
+            <select id="categoria" required>
                 <option value="">Selecione</option>
                 <option>Artesanato</option>
                 <option>Comida</option>
@@ -117,12 +115,12 @@
 
         <div class="form-group">
             <label>Horário de Funcionamento</label>
-            <input type="text" placeholder="Ex: 17h às 22h" required>
+            <input id="horario_func" type="text" placeholder="Ex: 17h às 22h" required>
         </div>
 
         <div class="form-group">
             <label>Contato (WhatsApp)</label>
-            <input type="tel" placeholder="Ex: (85) 99999-9999" required>
+            <input id="contato" type="tel" placeholder="Ex: (85) 99999-9999" required>
         </div>
 
         <button type="submit" class="btn-default">
@@ -146,5 +144,7 @@
 
     <script src="../scripts/scriptHeader.js"></script>
     <script src="../scripts/scriptUserMenu.js"></script>
+    <script src="../scripts/scriptLogCad.js"></script>
+    <script src="../scripts/scriptCreateBox.js"></script>
 </body>
 </html>

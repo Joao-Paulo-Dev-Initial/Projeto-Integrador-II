@@ -33,14 +33,15 @@ section {
 .box-container {
     display: flex;
     gap: 40px;
-    align-items: center;
+    align-items: flex-start;
     padding: 40px;
     flex-wrap: wrap;
 }
 
-.box-image img {
-    width: 400px;
-    max-width: 100%;
+.box-info-image img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
     border-radius: 20px;
 }
 
@@ -158,4 +159,10 @@ textarea{
 
 .create-box button{
     margin-top: 10px;
+}
+
+.header-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

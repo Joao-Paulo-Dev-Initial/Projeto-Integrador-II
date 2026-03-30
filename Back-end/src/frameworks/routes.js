@@ -1,4 +1,6 @@
 const { Router } = require("express");
+const upload = require("../frameworks/uploadConfig")
+
 const userController = require("../controllers/userController");
 const boxController = require("../controllers/boxController");
 const favoritosController = require("../controllers/favoritosController");
@@ -10,10 +12,13 @@ routes.get("/users/all", userController.getAllUsers);
 routes.post("/users/register", userController.registerUser);
 routes.post("/users/login", userController.loginUser);
 
+
 //Boxes
 routes.get("/boxes/all", boxController.getAllBoxes);
-routes.post("/boxes", boxController.createBox);
-routes.put("/boxes/:id", boxController.updateBox);
+routes.get("/boxes/:id", boxController.getBoxById);
+routes.get("/boxes/user/:id", boxController.getBoxByUser);
+routes.post("/boxes", upload.single("imagem"), boxController.createBox);
+routes.put("/boxes/:id", upload.single("imagem"), boxController.updateBox);
 routes.delete("/boxes/:id", boxController.deleteBox);
 
 //Favoritos

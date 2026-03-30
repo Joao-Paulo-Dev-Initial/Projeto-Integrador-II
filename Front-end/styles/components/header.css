@@ -3,7 +3,7 @@ header {
     padding: 28px 8%;
     position: sticky;
     top: 0;
-    background-color: #e0cea0;
+    background-color: #dbbc73;
     z-index: 3;
 }
 
@@ -43,6 +43,7 @@ header {
 #mobile_menu {
     display: none;
 }
+
 
 @media screen and (max-width: 1170px) {
     #nav_list,

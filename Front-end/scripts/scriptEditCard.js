@@ -4,7 +4,11 @@ const inputs = form.querySelectorAll("input, textarea, select");
 const saveBtn = document.getElementById("saveBtn");
 const imageUpload = document.getElementById("imageUpload");
 const preview = document.getElementById("preview");
+const editText = document.getElementById("editText");
+const editIcon = document.getElementById("editIcon");
+const deleteBtn = document.getElementById("deleteBtn");
 
+let boxId;
 let editing = false;
 
 editBtn.addEventListener("click", () => {
@@ -15,7 +19,16 @@ editBtn.addEventListener("click", () => {
     });
 
     saveBtn.style.display = editing ? "block" : "none";
+    deleteBtn.style.display = editing ? "block" : "none";
     preview.style.cursor = editing ? "pointer" : "default";
+
+     if(editing){
+        editIcon.classList.replace("fa-pen", "fa-xmark");
+        editText.textContent = "Cancelar";
+    } else {
+        editIcon.classList.replace("fa-xmark", "fa-pen");
+        editText.textContent = "Editar";
+    }
 
 });
 
@@ -35,3 +48,117 @@ imageUpload.addEventListener("change", (e) => {
         reader.readAsDataURL(file);
     }
 });
+
+async function loadMyBox() {
+    const token = localStorage.getItem('tanabox_token');
+
+    if (!token) {
+        alert('Faça login novamente');
+        location.href = '../pages/login.html';
+        return;
+    }
+
+    let usuarioId;
+
+    try {
+        const payload = JSON.parse(
+            atob(token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))
+        );
+        usuarioId = payload.id;
+    } catch (error) {
+        alert('Sessão inválida');
+        return;
+    }
+
+    try {
+        const res = await fetch(`http://localhost:8080/boxes/user/${usuarioId}`);
+        const box = await res.json();
+
+        if (!res.ok) {
+            alert("Você ainda não possui uma box.");
+            window.location.href = "../pages/createBox.html";
+            return;
+        }
+        boxId = box.id;
+
+        const inputs = document.querySelectorAll("#boxForm input, #boxForm textarea, #boxForm select");
+
+        inputs[0].value = box.numero_box || '';
+        inputs[1].value = box.nome_box || '';
+        inputs[2].value = box.descricao || '';
+        inputs[3].value = box.categoria || '';
+        inputs[4].value = box.horario_func || '';
+        inputs[5].value = box.contato || '';
+
+        // imagem (se tiver)
+        if (box.imagem) {
+            preview.src = `http://localhost:8080${box.imagem}`;
+        } else {
+            preview.src = '../imgs/TáNaBox-logo.svg';
+        }
+
+    } catch (error) {
+        console.error("Erro ao carregar box:", error);
+    }
+}
+
+deleteBtn.addEventListener("click", async () => {
+    const confirmar = confirm("Deseja realmente excluir sua box?");
+    if (!confirmar) return;
+
+    try {
+        const response = await fetch(`http://localhost:8080/boxes/${boxId}`, {
+            method: "DELETE"
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert(data.message);
+            window.location.href = "../pages/createBox.html";
+        } else {
+            alert(data.error);
+        }
+
+    } catch (error) {
+        console.error("Erro ao excluir:", error);
+    }
+});
+
+saveBtn.addEventListener("click", async () => {
+    if (!boxId) {
+        alert("Erro: box não carregada");
+        return;
+    }
+
+    const inputs = document.querySelectorAll("#boxForm input, #boxForm textarea, #boxForm select");
+
+    const formData = new FormData();
+
+    formData.append("numero_box", inputs[0].value);
+    formData.append("nome_box", inputs[1].value);
+    formData.append("descricao", inputs[2].value);
+    formData.append("categoria", inputs[3].value);
+    formData.append("horario_func", inputs[4].value);
+    formData.append("contato", inputs[5].value);
+
+    if (imageUpload.files[0]) {
+    formData.append("imagem", imageUpload.files[0]);
+    }
+
+    const response = await fetch(`http://localhost:8080/boxes/${boxId}`, {
+        method: "PUT",
+        body: formData
+    });
+
+    const result = await response.json
+
+    if(response.ok) {
+        alert("Box atualizada com sucesso!");
+        location.reload();
+    } else {
+        alert(result.error || "Erro ao atualizar");
+    }
+});
+
+loadMyBox();

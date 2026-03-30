@@ -12,9 +12,11 @@
 <link rel="stylesheet" href="../styles/components/menu.css">
 <link rel="stylesheet" href="../styles/global/style.css">
 <link rel="stylesheet" href="../styles/components/buttons.css">
+<link rel="stylesheet" href="../styles/components/user-menu.css">
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <title>Meu Box - TáNaBox</title>
 </head>
@@ -60,11 +62,11 @@
             <div id="mobile_menu">
                 <ul id="mobile_nav_list">
                     <li class="nav-item">
-                        <a href="#home">Início</a>
+                        <a href="../pages/home.html">Início</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="#menu">Boxes</a>
+                        <a href="#menu">Meu Box</a>
                     </li>
 
                     <li class="nav-item">
@@ -82,15 +84,17 @@
 <main id="mybox_main">
     <section class="mybox-section">
 
-    <div style="display:flex; justify-content:space-between; align-items:center;">
-        <h1>Minha Box</h1>
-        <i class="fa-solid fa-pen" id="editBtn" style="cursor:pointer;">
-            <h5>Editar</h5>
-        </i>
+    <div class="header-box">
+    <h1>Minha Box</h1>
+
+    <div id="editBtn" class="edit-button">
+        <i class="fa-solid fa-pen" id="editIcon"></i>
+        <span id="editText">Editar</span>
     </div>
+</div>
 
     <div class="box-image-edit"> 
-        <img src="../imgs/TáNaBox-logo.svg" id="preview"> <br><br> 
+        <img src="../imgs/TáNaBox-logo.svg" id="preview" alt="Preview da Box">
         <input type="file" id="imageUpload" accept="image/*" style="display:none;"> 
     </div>
 
@@ -115,11 +119,11 @@
             <label>Categoria</label>
             <select required disabled>
                 <option value="">Selecione</option>
-                <option>Artesanato</option>
-                <option>Comida</option>
-                <option>Roupas</option>
-                <option>Acessórios</option>
-                <option>Outros</option>
+                <option value="Artesanato">Artesanato</option>
+                <option value="Comida">Comida</option>
+                <option value="Roupas">Roupas</option>
+                <option value="Acessórios">Acessórios</option>
+                <option value="Outros">Outros</option>
             </select>
         </div>
 
@@ -133,9 +137,12 @@
             <input type="tel" placeholder="Ex: (85) 99999-9999" required disabled>
         </div>
 
-        <button type="submit" class="btn-default" id="saveBtn" style="display:none;">
-            Salvar Alterações
-        </button>
+       <button type="button" class="btn-default" id="saveBtn">
+    Salvar Alterações
+</button>
+       <button type="button" class="btn-default" id="deleteBtn">
+    Excluir Box
+</button>
 
     </form>
 
@@ -156,6 +163,7 @@
 <script src="../scripts/scriptEditCard.js"></script>
 <script src="../scripts/scriptHeader.js"></script>
 <script src="../scripts/scriptUserMenu.js"></script>
+<script src="../scripts/scriptLogCad.js"></script>
 
 </body>
 </html>

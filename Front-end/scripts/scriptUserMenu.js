@@ -1,13 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const userMenu = document.querySelector('.user-menu');
-  const button = userMenu.querySelector('button');
+  const userMenus = document.querySelectorAll('.user-menu');
+  if (!userMenus.length) return;
 
-  button.addEventListener('click', (e) => {
-    e.stopPropagation(); // evita conflitos
-    userMenu.classList.toggle('active');
+  userMenus.forEach((menu) => {
+    const button = menu.querySelector('button');
+    if (!button) return;
+
+    button.addEventListener('click', (e) => {
+      e.stopPropagation();
+      userMenus.forEach((other) => {
+        if (other !== menu) other.classList.remove('active');
+      });
+      menu.classList.toggle('active');
+    });
   });
 
   document.addEventListener('click', () => {
-    userMenu.classList.remove('active');
+    userMenus.forEach((menu) => menu.classList.remove('active'));
   });
 });
