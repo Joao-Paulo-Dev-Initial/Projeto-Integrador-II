@@ -35,6 +35,7 @@ formData.append("nome_box", document.getElementById('nome_box').value);
 formData.append("descricao", document.getElementById('descricao').value);
 formData.append("categoria", document.getElementById('categoria').value);
 formData.append("horario_func", document.getElementById('horario_func').value);
+formData.append("horario_fech", document.getElementById('horario_fech').value);
 formData.append("contato", document.getElementById('contato').value);
 formData.append("usuario_id", Number(usuarioId));
 
@@ -80,3 +81,29 @@ async function userAlreadyHasBox() {
 }
 
 // userAlreadyHasBox();
+
+//adicionar telefone
+const telefone = document.getElementById("contato");
+
+telefone.addEventListener("input", function (e) {
+    let valor = e.target.value;
+
+    valor = valor.replace(/\D/g, ""); // remove tudo que não for número
+
+    valor = valor.slice(0, 11);
+
+    // aplica a máscara
+    if (valor.length > 0) {
+        valor = "(" + valor;
+    }
+
+    if (valor.length > 3) {
+        valor = valor.slice(0, 3) + ") " + valor.slice(3);
+    }
+
+    if (valor.length > 10) {
+        valor = valor.slice(0, 10) + "-" + valor.slice(10);
+    }
+
+    e.target.value = valor;
+});

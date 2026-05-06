@@ -88,7 +88,8 @@ async function loadMyBox() {
         inputs[2].value = box.descricao || '';
         inputs[3].value = box.categoria || '';
         inputs[4].value = box.horario_func || '';
-        inputs[5].value = box.contato || '';
+        inputs[5].value = box.horario_fech || '';
+        inputs[6].value = box.contato || '';
 
         // imagem (se tiver)
         if (box.imagem) {
@@ -140,7 +141,8 @@ saveBtn.addEventListener("click", async () => {
     formData.append("descricao", inputs[2].value);
     formData.append("categoria", inputs[3].value);
     formData.append("horario_func", inputs[4].value);
-    formData.append("contato", inputs[5].value);
+    formData.append("horario_fech", inputs[5].value);
+    formData.append("contato", inputs[6].value);
 
     if (imageUpload.files[0]) {
     formData.append("imagem", imageUpload.files[0]);
@@ -151,7 +153,7 @@ saveBtn.addEventListener("click", async () => {
         body: formData
     });
 
-    const result = await response.json
+    const result = await response.json();
 
     if(response.ok) {
         alert("Box atualizada com sucesso!");
@@ -160,5 +162,31 @@ saveBtn.addEventListener("click", async () => {
         alert(result.error || "Erro ao atualizar");
     }
 });
+
+const telefone = document.getElementById("contato");
+
+telefone.addEventListener("input", function (e) {
+    let valor = e.target.value;
+
+    valor = valor.replace(/\D/g, ""); // remove tudo que não for número
+
+    valor = valor.slice(0, 11);
+
+    // aplica a máscara
+    if (valor.length > 0) {
+        valor = "(" + valor;
+    }
+
+    if (valor.length > 3) {
+        valor = valor.slice(0, 3) + ") " + valor.slice(3);
+    }
+
+    if (valor.length > 10) {
+        valor = valor.slice(0, 10) + "-" + valor.slice(10);
+    }
+
+    e.target.value = valor;
+});
+
 
 loadMyBox();

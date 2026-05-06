@@ -93,13 +93,13 @@
 
         <div class="form-group">
             <label>Nome da Box</label>
-            <input id="nome_box" type="text" placeholder="Ex: Box do Artesanato" required>
+            <input id="nome_box" maxlength="40" type="text" placeholder="Ex: Box do Artesanato" required>
         </div>
 
         <div class="form-group">
-            <label>Descrição</label>
-            <textarea id="descricao" placeholder="Descreva sua box..." required></textarea>
-        </div>
+    <label for="descricao">Descrição</label>
+    <textarea id="descricao" placeholder="Descreva sua box..." maxlength="250" required></textarea>
+    </div>
 
         <div class="form-group">
             <label>Categoria</label>
@@ -113,14 +113,19 @@
             </select>
         </div>
 
-        <div class="form-group">
+       <div class="form-group">
             <label>Horário de Funcionamento</label>
-            <input id="horario_func" type="text" placeholder="Ex: 17h às 22h" required>
+            <input type="time" id="horario_func" placeholder="Ex: 17h às 22h" required>
         </div>
 
         <div class="form-group">
-            <label>Contato (WhatsApp)</label>
-            <input id="contato" type="tel" placeholder="Ex: (85) 99999-9999" required>
+            <label>Horário de Fechamento</label>
+            <input type="time" id="horario_fech" placeholder="Ex: 17h às 22h" required>
+        </div>
+
+        <div class="form-group">
+    <label for="contato">Contato (WhatsApp)</label>
+    <input type="tel" id="contato" name="telefone" placeholder="(00) 00000-0000" maxlength="15" required>
         </div>
 
         <button type="submit" class="btn-default">
@@ -146,5 +151,6 @@
     <script src="../scripts/scriptUserMenu.js"></script>
     <script src="../scripts/scriptLogCad.js"></script>
     <script src="../scripts/scriptCreateBox.js"></script>
+
 </body>
 </html>

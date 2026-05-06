@@ -20,6 +20,7 @@ function getIdFromUrl() {
 // }
 
 async function getBoxInfo() {
+    const params = new URLSearchParams(window.location.search);
     const id = getIdFromUrl();
 
     const result = await fetch(`http://localhost:8080/boxes/${id}`);
@@ -33,7 +34,17 @@ async function getBoxInfo() {
     document.getElementById('box-numero').textContent = box.numero_box;
     document.getElementById('box-categoria').textContent = box.categoria;
     document.getElementById('box-horario').textContent = box.horario_func;
+    document.getElementById('box-horario_fech').textContent = box.horario_fech;
     document.getElementById('box-contato').textContent = box.contato;
+
+    const whatsappLink = document.getElementById('whatsapp-link');
+
+    if(box.contato) {
+        const numeroLimpo = box.contato.replace(/\D/g, "");
+        const numeroWhatsapp = `55${numeroLimpo}`;
+
+        whatsappLink.href = `https://wa.me/${numeroWhatsapp}?text=Olá,%20vi%20sua%20box%20no%20TáNaBox`
+    }
 }
 
 

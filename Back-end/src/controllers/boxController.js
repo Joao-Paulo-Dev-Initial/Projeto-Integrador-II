@@ -39,7 +39,7 @@ async function createBox(request, reply) {
     console.log("Nenhum arquivo recebido!");
 }
 
-    const {usuario_id, numero_box, nome_box, descricao, categoria, horario_func, contato} = request.body;
+    const {usuario_id, numero_box, nome_box, descricao, categoria, horario_func, horario_fech, contato} = request.body;
 
     if(!usuario_id || !numero_box || !nome_box) {
       return reply.status(400).json({error: "usuario_id obrigatório"});
@@ -64,6 +64,7 @@ async function createBox(request, reply) {
           descricao,
           categoria,
           horario_func,
+          horario_fech,
           contato,
           usuario_id: userIdNumber,
           imagem: imageUrl

@@ -18,7 +18,7 @@ body {
 
 .container {
     width: 90%;
-    max-width: 1100px;
+    max-width: 1200px;
     min-height: 80vh;
     display: flex;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, .212);
@@ -215,66 +215,93 @@ body {
     color: #fff;
 }
 
-@media screen and (max-width: 1024px) {
-    .form-image{
+@media screen and (max-width: 1330px) {
+
+    .container {
+        width: 90%;
+        height: auto;
+    }
+
+    .form {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 1rem;
+        height: auto;
+        min-height: 100vh;
+    }
+
+   .container {
+        width: 95%;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .form {
+        width: 100%;
+        padding: 2rem 1.5rem;
+    }
+
+    .form-image {
         display: none;
     }
 
-    .container{
-        width: 90%;
+    .form-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
     }
-    .form{
-        width: 100%;
-    }
-}
 
-@media screen and (max-width: 1064px) {
-    .container{
-        width: 90%;
-        height: auto;
-    }
     .input-group {
+        width: 100%;
+        display: flex;
         flex-direction: column;
-        overflow: scroll;
-        flex-wrap: nowrap;
-        max-width: 10rem;
-        padding-right: 5rem;
+        padding: 0;
     }
-    .type-inputs{
-        margin-top: 2rem;
+
+    .input-box {
+        width: 100%;
     }
-    .type-group{
+
+    .input-box input {
+        width: 100%;
+    }
+
+    .type-group {
         flex-direction: column;
+        gap: 0.8rem;
     }
-    .type-input{
-        margin-bottom: 9.2rem;
+
+    .type-input {
+        margin-bottom: 0;
+    }
+
+    .continue-button button {
+        width: 100%;
     }
 }
 
-@media screen and (max-width: 768px){
-
-    body{
-        height: auto;
-        padding: 20px 0;
+@media screen and (max-width: 480px) {
+    .form {
+        padding: 1.5rem 1rem;
     }
 
-    .container{
-        flex-direction: column;
-        width: 95%;
-        height: auto;
+    .form-header h1 {
+        font-size: 1.5rem;
     }
 
-    .form-image{
-        width: 100%;
+    #container-flip {
+        font-size: 22px;
     }
 
-    .form{
-        width: 100%;
-        padding: 2rem;
+    #flip {
+        height: 40px;
     }
 
-    .input-box{
-        width: 100%;
+    .form-image {
+        display: none;
     }
-
 }
