@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../styles/components/menu.css">
     <link rel="stylesheet" href="../styles/components/footer.css">
     <link rel="stylesheet" href="../styles/components/user-menu.css">
+    <link rel="stylesheet" href="../styles/components/modal.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -171,17 +172,57 @@
     <script src="../scripts/scriptLogCad.js"></script>
     <script src="../scripts/scriptBoxInfo.js"></script>
 
-    <div id="favModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#00000080; justify-content:center; align-items:center;">
-    <div style="background:white; padding:20px; border-radius:10px; width:300px;">
-        <h3>Adicionar observação</h3>
+    <div id="favModal" class="modal-overlay">
 
-        <textarea id="favObservacao" placeholder="Ex. Preço acessível" style="width:100%; height:80px;"></textarea>
+    <div class="modal-content">
 
-        <div style="margin-top:10px;">
-            <button onclick="confirmFavorite()" class="btn-default">Salvar</button>
-            <button onclick="closeModal()" class="btn-default">Cancelar</button>
+        <div class="modal-header">
+            <h3>Adicionar aos Favoritos</h3>
+
+            <button class="modal-close" onclick="closeModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
         </div>
+
+        <p class="modal-text">
+            Deseja adicionar uma observação para lembrar desta box?
+        </p>
+
+        <textarea
+            id="favObservacao"
+            placeholder="Ex: Preço acessível, vende artesanato regional..."
+        ></textarea>
+
+        <div class="modal-buttons">
+            <button onclick="closeModal()" class="btn-cancel">
+                Cancelar
+            </button>
+
+            <button onclick="confirmFavorite()" class="btn-default">
+                Salvar Favorito
+            </button>
+        </div>
+
     </div>
+
+</div>
+
+<div id="messageModal" class="message-modal">
+
+    <div class="message-content">
+
+        <div id="messageIcon"></div>
+
+        <h3 id="messageTitle"></h3>
+
+        <p id="messageText"></p>
+
+        <button class="btn-default" onclick="closeMessageModal()">
+            OK
+        </button>
+
+    </div>
+
 </div>
 
 </body>

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../styles/components/menu.css">
     <link rel="stylesheet" href="../styles/components/footer.css">
     <link rel="stylesheet" href="../styles/components/user-menu.css">
+    <link rel="stylesheet" href="../styles/components/modal.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Favoritos - TáNaBox</title>
@@ -93,6 +94,55 @@
                 </span>
             </div>
         </footer>
+
+
+        <div id="deleteModal" class="modal-overlay">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h3>Remover Favorito</h3>
+
+            <button class="modal-close" onclick="closeDeleteModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <p class="modal-text">
+            Tem certeza que deseja remover esta box dos seus favoritos?
+        </p>
+
+        <div class="modal-buttons">
+            <button class="btn-cancel" onclick="closeDeleteModal()">
+                Cancelar
+            </button>
+
+            <button class="btn-default" onclick="confirmDeleteFavorite()">
+                Excluir
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="messageModal" class="message-modal">
+
+    <div class="message-content">
+
+        <div id="messageIcon"></div>
+
+        <h3 id="messageTitle"></h3>
+
+        <p id="messageText"></p>
+
+        <button class="btn-default" onclick="closeMessageModal()">
+            OK
+        </button>
+
+    </div>
+
+</div>
 
         <script src="../scripts/scriptHeader.js"></script>
         <script src="../scripts/scriptUserMenu.js"></script>

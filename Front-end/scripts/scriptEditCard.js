@@ -8,6 +8,9 @@ const editText = document.getElementById("editText");
 const editIcon = document.getElementById("editIcon");
 const deleteBtn = document.getElementById("deleteBtn");
 
+saveBtn.style.display = "none";
+deleteBtn.style.display = "none";
+
 let boxId;
 let editing = false;
 
@@ -104,26 +107,7 @@ async function loadMyBox() {
 }
 
 deleteBtn.addEventListener("click", async () => {
-    const confirmar = confirm("Deseja realmente excluir sua box?");
-    if (!confirmar) return;
-
-    try {
-        const response = await fetch(`http://localhost:8080/boxes/${boxId}`, {
-            method: "DELETE"
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            alert(data.message);
-            window.location.href = "../pages/createBox.html";
-        } else {
-            alert(data.error);
-        }
-
-    } catch (error) {
-        console.error("Erro ao excluir:", error);
-    }
+    document.getElementById("deleteBoxModal").style.display = "flex";
 });
 
 saveBtn.addEventListener("click", async () => {
@@ -156,10 +140,22 @@ saveBtn.addEventListener("click", async () => {
     const result = await response.json();
 
     if(response.ok) {
-        alert("Box atualizada com sucesso!");
+        showMessageModal(
+        'success',
+        'Box atualizada!',
+        'As alterações foram salvas com sucesso.'
+    );
+
+    setTimeout(() => {
         location.reload();
+    }, 2000);
+
     } else {
-        alert(result.error || "Erro ao atualizar");
+        showMessageModal(
+             'error',
+             'Erro',
+             result.error || 'Não foi possível atualizar a box.'
+        );
     }
 });
 
@@ -188,5 +184,92 @@ telefone.addEventListener("input", function (e) {
     e.target.value = valor;
 });
 
+
+function showMessageModal(type, title, text) {
+
+    const modal = document.getElementById('messageModal');
+    const icon = document.getElementById('messageIcon');
+
+    document.getElementById('messageTitle').textContent = title;
+    document.getElementById('messageText').textContent = text;
+
+    if(type === 'success') {
+        icon.innerHTML =
+            '<i class="fa-solid fa-circle-check icon-success"></i>';
+    } else {
+        icon.innerHTML =
+            '<i class="fa-solid fa-circle-xmark icon-error"></i>';
+    }
+
+    modal.style.display = 'flex';
+}
+
+function closeMessageModal() {
+    document.getElementById('messageModal').style.display = 'none';
+}
+
+function closeDeleteBoxModal() {
+    document.getElementById("deleteBoxModal").style.display = "none";
+}
+
+async function confirmDeleteBox() {
+
+    closeDeleteBoxModal();
+
+    try {
+
+        const response = await fetch(
+            `http://localhost:8080/boxes/${boxId}`,
+            {
+                method: "DELETE"
+            }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+
+            showMessageModal(
+                'success',
+                'Box excluída',
+                data.message || 'Sua box foi removida com sucesso.'
+            );
+
+            setTimeout(() => {
+                window.location.href = "../pages/createBox.html";
+            }, 2000);
+
+        } else {
+
+            showMessageModal(
+                'error',
+                'Erro',
+                data.error || 'Não foi possível excluir a box.'
+            );
+
+        }
+
+    } catch (error) {
+
+        showMessageModal(
+            'error',
+            'Erro',
+            'Ocorreu um erro ao excluir a box.'
+        );
+
+        console.error(error);
+    }
+}
+
+window.addEventListener('click', (event) => {
+
+    const deleteModal =
+        document.getElementById('deleteBoxModal');
+
+    if(event.target === deleteModal) {
+        closeDeleteBoxModal();
+    }
+
+});
 
 loadMyBox();

@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="../styles/global/style.css">
 <link rel="stylesheet" href="../styles/components/buttons.css">
 <link rel="stylesheet" href="../styles/components/user-menu.css">
+<link rel="stylesheet" href="../styles/components/modal.css">
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
@@ -164,6 +165,56 @@
         </span>
     </div>
 </footer>
+
+<div id="messageModal" class="message-modal">
+
+    <div class="message-content">
+
+        <div id="messageIcon"></div>
+
+        <h3 id="messageTitle"></h3>
+
+        <p id="messageText"></p>
+
+        <button class="btn-default" onclick="closeMessageModal()">
+            OK
+        </button>
+
+    </div>
+
+</div>
+
+<div id="deleteBoxModal" class="modal-overlay">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h3>Excluir Box</h3>
+
+            <button class="modal-close" onclick="closeDeleteBoxModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <p class="modal-text">
+            Tem certeza que deseja excluir sua box? Esta ação não poderá ser desfeita.
+        </p>
+
+        <div class="modal-buttons">
+
+            <button class="btn-cancel" onclick="closeDeleteBoxModal()">
+                Cancelar
+            </button>
+
+            <button class="btn-default" onclick="confirmDeleteBox()">
+                Excluir
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 <script src="../scripts/scriptEditCard.js"></script>
 <script src="../scripts/scriptHeader.js"></script>

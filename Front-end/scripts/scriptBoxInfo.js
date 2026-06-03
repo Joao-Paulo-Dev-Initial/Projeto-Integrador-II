@@ -3,21 +3,6 @@ function getIdFromUrl() {
     return params.get('id');
 }
 
-//Implementar depois
-
-// function openWhatsapp() {
-//     let contato = document.getElementById('contato').value;
-
-//     contato = contato.replace(/\D/g, "");
-
-//     if(!contato.startsWith("55")) {
-//         contato = "55" + contato;
-//     }
-
-//     let url = "https://wa.me/" + contato;
-
-//     window.open(url, "_blank");
-// }
 
 async function getBoxInfo() {
     const params = new URLSearchParams(window.location.search);
@@ -55,8 +40,16 @@ async function confirmFavorite() {
     const token = localStorage.getItem('tanabox_token');
 
     if(!token) {
-        alert('Faça login para favoritar.');
-        location.href = '../pages/login.html';
+        showMessageModal(
+            'error',
+            'Login necessário',
+            'Você precisa estar logado para favoritar uma box.'
+        );
+
+        setTimeout(() => {
+            location.href = '../pages/login.html';
+        }, 2000);
+
         return;
     }
 
@@ -66,8 +59,13 @@ async function confirmFavorite() {
         const payload = JSON.parse(atob(token.split('.')[1]));
         userId = payload.id;
     } catch {
-        alert('Sessão inválida.');
-        return;
+        showMessageModal(
+            'error',
+            'Sessão inválida',
+            'Faça login novamente.'
+        );
+
+return;
     }
 
     const boxId = getIdFromUrl();
@@ -85,10 +83,19 @@ async function confirmFavorite() {
     });
 
     if(result.ok) {
-        alert('Box favoritada!');
         closeModal();
+
+        showMessageModal(
+            'success',
+            'Favorito salvo!',
+            'A box foi adicionada aos seus favoritos com sucesso.'
+        );
     } else {
-        alert('Erro ao favoritar.');
+        showMessageModal(
+             'error',
+             'Erro',
+             'Não foi possível favoritar esta box.'
+        );
     }
 }
 
@@ -98,6 +105,36 @@ function openModal() {
 
 function closeModal() {
     document.getElementById('favModal').style.display = 'none';
+    document.getElementById('favObservacao').value = '';
+}
+
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('favModal');
+
+    if(event.target === modal) {
+        closeModal();
+    }
+});
+
+function showMessageModal(type, title, text) {
+
+    const modal = document.getElementById('messageModal');
+    const icon = document.getElementById('messageIcon');
+
+    document.getElementById('messageTitle').textContent = title;
+    document.getElementById('messageText').textContent = text;
+
+    if(type === 'success') {
+        icon.innerHTML = '<i class="fa-solid fa-circle-check icon-success"></i>';
+    } else {
+        icon.innerHTML = '<i class="fa-solid fa-circle-xmark icon-error"></i>';
+    }
+
+    modal.style.display = 'flex';
+}
+
+function closeMessageModal() {
+    document.getElementById('messageModal').style.display = 'none';
 }
 
 getBoxInfo();
