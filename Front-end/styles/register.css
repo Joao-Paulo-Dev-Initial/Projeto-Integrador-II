@@ -218,17 +218,42 @@ body {
     cursor: pointer;
     transition: background-color .3s ease;
 
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: #fff;
+
 }
 
 .continue-button button:hover {
     background-color:#f8d477;
 }
 
-.continue-button button a {
-    text-decoration: none;
-    font-size: 0.93rem;
-    font-weight: 500;
-    color: #fff;
+.loading {
+    opacity: .8;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: "";
+    width: 14px;
+    height: 14px;
+    margin-left: 10px;
+    display: inline-block;
+
+    border: 2px solid white;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+
+    animation: spin .8s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @media screen and (max-width: 1330px) {

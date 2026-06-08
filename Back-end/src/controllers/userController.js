@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const database = require("../Database/database");
 
 async function getAllUsers(request, reply) {
-    try {
+     try {
         const replyDB = await users.findAll();
         reply.status(200).json(replyDB);
     } catch (error) {

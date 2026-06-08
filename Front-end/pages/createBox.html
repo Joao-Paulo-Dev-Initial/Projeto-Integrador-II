@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="../styles/components/menu.css">
     <link rel="stylesheet" href="../styles/components/footer.css">
     <link rel="stylesheet" href="../styles/components/user-menu.css">
+    <link rel="stylesheet" href="../styles/components/modal.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <title>Criar Box</title>
@@ -79,7 +79,7 @@
 
     <h1>Criar sua Box</h1>
 
-    <form class="box-form" id="createBoxForm">
+    <form class="box-form" id="createBoxForm" autocomplete="off">
 
         <div class="form-group">
             <label>Imagem da Box</label>
@@ -146,6 +146,25 @@
         </span>
     </div>
 </footer>
+
+<!-- Modal de sucesso -->
+<div id="messageModal" class="message-modal">
+
+    <div class="message-content">
+
+        <div id="messageIcon"></div>
+
+        <h3 id="messageTitle"></h3>
+
+        <p id="messageText"></p>
+
+        <button class="btn-default" onclick="closeMessageModal()">
+            OK
+        </button>
+
+    </div>
+
+</div>
 
     <script src="../scripts/scriptHeader.js"></script>
     <script src="../scripts/scriptUserMenu.js"></script>

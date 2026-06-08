@@ -2,30 +2,91 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     min-height: 100vh;
+    padding: 40px 80px;
+    
+}
+
+.section-title {
+    margin-bottom: 5px;
+}
+
+.section-subtitle {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+#filters {
+    margin-top: 10px;
+}
+
+#menu-card {
+    width: 100%;
+    max-width: 800px;
+
+    background: linear-gradient(
+        135deg,
+        #e9a209,
+        #f4b400
+    );
+
+    color: white;
+
+    padding: 30px;
+    margin-bottom: 30px;
+    margin-top: -100px;
+    z-index: 2;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(233, 162, 9, 0.3);
+
+    text-align: center;
+}
+
+#menu-card .section-title {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
+
+#menu-card .section-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 25px;
+}
+
+#menu-card .filter-input {
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+#menu-card #categoryFilter {
+    background-color: rgba(255, 255, 255, 0.95);
 }
 
 #boxes {
     width: 100%;
-    display: flex;
-    justify-content: center;
+    max-width: 1200px;
+    margin: 32px auto 0;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
     gap: 24px;
-    margin-top: 32px;
 }
 
 .box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 20px;
-    gap: 18px;
-    width: 25%;
-    padding: 20px;
+    border-radius: 16px;
+    gap: 12px;
+    padding: 14px;
     background-color: #ffffff;
     box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, -.1);
     position: relative;
-    overflow: hidden; /*tudo que tá pra fora da div da box desaparece*/
+    overflow: hidden;
+    width: 100%;
+    max-width: 360px;
+    justify-self: center;
 }
 
 .box-number {
@@ -67,25 +128,21 @@
 
 .box-image {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
     border: 10px;
 }
 
-@media screen and (max-width: 1170px) {
+@media screen and (max-width: 900px) {
     #boxes {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .box {
-        width: calc(50% - 12px); /*aqui está fazendo um calculo para ele diminuir a largura com o gap feito, para não quebrar muito na responsividade*/
+        grid-template-columns: repeat(2, 1fr);
+        gap: 9px;
     }
 }
 
 @media screen and (max-width: 600px) {
-    .box {
-        width: 100%;
+    #boxes {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 
     #menu .selection-subtitle {

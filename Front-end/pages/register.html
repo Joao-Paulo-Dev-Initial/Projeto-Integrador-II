@@ -23,31 +23,31 @@
     </div>
 </div>
         <div class="form">
-            <form action="#">
+            <form action="#" autocomplete="off">
                 <div class="form-header">
                     <div class="title">
                         <h1>Cadastre-se</h1>
                     </div>
                     <div class="login-buttom">
-                        <button><a href="#">Entrar</a></button>
+                        <button type="button"><a href="#">Entrar</a></button>
                     </div>
                 </div>
                 <div class="input-group">
                     <div class="input-box">
                         <label for="name">Nome Completo</label>
-                        <input id="name" type="text" placeholder="Digite seu nome completo" required>
+                        <input id="name" type="text" placeholder="Digite seu nome completo" required autocomplete="off">
                     </div>
                     <div class="input-box">
                         <label for="email">Email</label>
-                        <input id="email" type="email" placeholder="Digite seu email" required>
+                        <input id="email" type="email" placeholder="Digite seu email" required autocomplete="off">
                     </div>
                     <div class="input-box">
                         <label for="password">Senha</label>
-                        <input id="password" type="password" placeholder="Digite sua senha" required>
+                        <input id="password" type="password" placeholder="Digite sua senha" required autocomplete="new-password">
                     </div>
                     <div class="input-box">
                         <label for="confirm-password">Confirmar Senha</label>
-                        <input id="confirm-password" type="password" placeholder="Confirme sua senha" required>
+                        <input id="confirm-password" type="password" placeholder="Confirme sua senha" required autocomplete="new-password">
                     </div>
                 </div>
                 <div class="type">
@@ -68,7 +68,7 @@
 </div>
 
                 <div class="continue-button">
-                    <button type="submit"> Cadastrar</button>
+                    <button id="register-btn" type="submit"> Cadastrar</button>
                 </div>
 
             </form>

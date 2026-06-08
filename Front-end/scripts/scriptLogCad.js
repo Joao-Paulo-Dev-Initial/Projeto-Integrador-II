@@ -60,8 +60,16 @@ function initLogin() {
     e.preventDefault();
     var email = document.getElementById('email').value.trim();
     var senha = document.getElementById('password').value;
+    var btn = document.getElementById('login-btn');
 
-    if (!validateEmail(email)) return alert('Email inválido. Exemplo: nome@dominio.com');
+    btn.classList.add('loading');
+    btn.disabled = true;
+
+    if (!validateEmail(email)){
+      btn.classList.remove('loading');
+      btn.disabled = false;
+      return alert('Email inválido. Exemplo: nome@dominio.com');
+    } 
 
     try {
       var out = await postJson('http://localhost:8080/users/login', {
@@ -76,6 +84,8 @@ function initLogin() {
       }
       location.href = 'home.html';
     } catch (err) {
+      btn.classList.remove('loading');
+      btn.disabled = false;
       alert('Sem conexão. Confira se o back-end está em http://localhost:8080');
     }
   });
@@ -93,15 +103,26 @@ function initRegister() {
 
     var email = document.getElementById('email').value.trim();
     var senha = document.getElementById('password').value;
-    if (!validateEmail(email)) return alert('Email inválido. Exemplo: nome@dominio.com');
-    if (!validatePassword(senha)) return alert('A senha deve ter no mínimo 6 caracteres, com letras e números.');
 
-    if (senha !== document.getElementById('confirm-password').value) return alert('As senhas não coincidem.');
+    if (!validateEmail(email)) 
+      return alert('Email inválido. Exemplo: nome@dominio.com');
+
+    if (!validatePassword(senha)) 
+      return alert('A senha deve ter no mínimo 6 caracteres, com letras e números.');
+
+    if (senha !== document.getElementById('confirm-password').value) 
+      return alert('As senhas não coincidem.');
 
     var radio = document.querySelector('input[name="type"]:checked');
-    if (!radio) return alert('Escolha Feirante ou Usuário.');
+
+    if (!radio) 
+      return alert('Escolha Feirante ou Usuário.');
 
     var tipo = radio.id === 'admin' ? 'feirante' : 'turista';
+
+    var submitBtn = form.querySelector('.continue-button button');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Carregando...';
 
     try {
       var reg = await postJson('http://localhost:8080/users/register', {

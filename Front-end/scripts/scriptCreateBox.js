@@ -4,6 +4,7 @@ if (form) {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+
         const token = localStorage.getItem('tanabox_token');
 
         if (!token) {
@@ -24,14 +25,15 @@ if (form) {
             );
 
             usuarioId = payload.id;
+
         } catch (err) {
+            console.error(err);
             alert("Sessão inválida. Faça login novamente.");
             location.href = '../pages/login.html';
             return;
         }
 
         const fileInput = document.getElementById('imagem');
-
         const formData = new FormData();
 
         if (fileInput.files[0]) {
@@ -47,22 +49,57 @@ if (form) {
         formData.append("contato", document.getElementById('contato').value);
         formData.append("usuario_id", Number(usuarioId));
 
-        const result = await fetch("http://localhost:8080/boxes", {
-            method: "POST",
-            body: formData
-        });
+        try {
 
-        const response = await result.json().catch(() => ({}));
+            const result = await fetch("http://localhost:8080/boxes", {
+                method: "POST",
+                body: formData
+            });
 
-        if (result.ok) {
-            alert("Box criada com sucesso");
-            location.href = "../pages/home.html";
-        } else {
-            alert(response.error || response.message || "Erro ao criar box");
+            const response = await result.json().catch(() => ({}));
+
+            console.log("STATUS:", result.status);
+            console.log("URL FINAL:", result.url);
+            console.log("RESPONSE:", response);
+
+            if (result.ok) {
+
+                console.log("SUCESSO");
+                console.log("MOSTRANDO MODAL");
+
+                showMessageModal(
+                    'success',
+                    'Box criada!',
+                    'Sua box foi criada com sucesso.'
+                );
+                setTimeout(() => {
+        window.location.href = "../pages/home.html";
+    }, 2000);
+
+            } else {
+
+                console.log("ERRO");
+
+                showMessageModal(
+                    'error',
+                    'Erro',
+                    response.error || response.message || 'Erro ao criar box.'
+                );
+            }
+
+        } catch (error) {
+
+            console.error("Erro na requisição:", error);
+
+            showMessageModal(
+                'error',
+                'Erro',
+                'Não foi possível conectar ao servidor.'
+            );
         }
     });
 }
-
+ 
 async function userAlreadyHasBox() {
     const token = localStorage.getItem('tanabox_token');
 
@@ -94,7 +131,7 @@ async function userAlreadyHasBox() {
     }
 }
 
-// userAlreadyHasBox();
+userAlreadyHasBox();
 
 // adicionar telefone
 const telefone = document.getElementById("contato");
@@ -121,4 +158,41 @@ telefone.addEventListener("input", function (e) {
     }
 
     e.target.value = valor;
+});
+
+function showMessageModal(type, title, text) {
+
+    console.log("MODAL ABERTO");
+
+    const modal = document.getElementById('messageModal');
+    const icon = document.getElementById('messageIcon');
+
+    document.getElementById('messageTitle').textContent = title;
+    document.getElementById('messageText').textContent = text;
+
+    if (type === 'success') {
+        icon.innerHTML =
+            '<i class="fa-solid fa-circle-check icon-success"></i>';
+    } else {
+        icon.innerHTML =
+            '<i class="fa-solid fa-circle-xmark icon-error"></i>';
+    }
+
+    modal.style.display = 'flex';
+}
+
+function closeMessageModal() {
+    document.getElementById('messageModal').style.display = 'none';
+
+    window.location.href = "../pages/myBox.html";
+}
+
+window.addEventListener('click', (event) => {
+
+    const modal = document.getElementById('messageModal');
+
+    if (event.target === modal) {
+        closeMessageModal();
+    }
+
 });
