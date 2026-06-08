@@ -18,7 +18,7 @@ async function getFavorites() {
         return;
     }
 
-    const result = await fetch(`http://localhost:8080/favoritos/${usuarioId}`);
+    const result = await fetch(`https://projeto-integrador-ii-u48l.onrender.com/favoritos/${usuarioId}`);
     const favoritos = await result.json();
 
     const container = document.getElementById('boxes');
@@ -30,7 +30,7 @@ async function getFavorites() {
 
         card.innerHTML = `
             <div class="box-fav"><i class="fa-solid fa-bookmark"></i></div>
-            <img src="http://localhost:8080${fav.imagem}" class="box-image">
+            <img src="hhttps://projeto-integrador-ii-u48l.onrender.com${fav.imagem}" class="box-image">
             <p class="box-number">Box ${fav.numero_box || ''}</p>
             <h3 class="box-title">${fav.nome_box}</h3>
             <span class="box-description">Observação: ${fav.observacao}</span>
@@ -62,7 +62,7 @@ async function confirmDeleteFavorite() {
     if (!favoriteIdToDelete) return;
 
     const result = await fetch(
-        `http://localhost:8080/favoritos/delete/${favoriteIdToDelete}`,
+        `https://projeto-integrador-ii-u48l.onrender.com/favoritos/delete/${favoriteIdToDelete}`,
         {
             method: 'DELETE'
         }

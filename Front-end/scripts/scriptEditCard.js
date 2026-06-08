@@ -74,7 +74,7 @@ async function loadMyBox() {
     }
 
     try {
-        const res = await fetch(`http://localhost:8080/boxes/user/${usuarioId}`);
+        const res = await fetch(`https://projeto-integrador-ii-u48l.onrender.com/boxes/user/${usuarioId}`);
         const box = await res.json();
 
         if (!res.ok) {
@@ -96,7 +96,7 @@ async function loadMyBox() {
 
         // imagem (se tiver)
         if (box.imagem) {
-            preview.src = `http://localhost:8080${box.imagem}`;
+            preview.src = `https://projeto-integrador-ii-u48l.onrender.com${box.imagem}`;
         } else {
             preview.src = '../imgs/TáNaBox-logo.svg';
         }
@@ -132,7 +132,7 @@ saveBtn.addEventListener("click", async () => {
     formData.append("imagem", imageUpload.files[0]);
     }
 
-    const response = await fetch(`http://localhost:8080/boxes/${boxId}`, {
+    const response = await fetch(`https://projeto-integrador-ii-u48l.onrender.com/boxes/${boxId}`, {
         method: "PUT",
         body: formData
     });
@@ -219,7 +219,7 @@ async function confirmDeleteBox() {
     try {
 
         const response = await fetch(
-            `http://localhost:8080/boxes/${boxId}`,
+            `https://projeto-integrador-ii-u48l.onrender.com/boxes/${boxId}`,
             {
                 method: "DELETE"
             }

@@ -51,7 +51,7 @@ if (form) {
 
         try {
 
-            const result = await fetch("http://localhost:8080/boxes", {
+            const result = await fetch("https://projeto-integrador-ii-u48l.onrender.com/boxes", {
                 method: "POST",
                 body: formData
             });
@@ -117,7 +117,7 @@ async function userAlreadyHasBox() {
         const usuarioId = payload.id;
 
         const result = await fetch(
-            `http://localhost:8080/boxes/user/${usuarioId}`
+            `https://projeto-integrador-ii-u48l.onrender.com/boxes/user/${usuarioId}`
         );
 
         if (result.status === 200) {

@@ -8,13 +8,13 @@ async function getBoxInfo() {
     const params = new URLSearchParams(window.location.search);
     const id = getIdFromUrl();
 
-    const result = await fetch(`http://localhost:8080/boxes/${id}`);
+    const result = await fetch(`https://projeto-integrador-ii-u48l.onrender.com/boxes/${id}`);
     const box = await result.json();
 
     document.getElementById('box-title').textContent = box.nome_box;
     document.getElementById('box-descricao').textContent = box.descricao;
     document.getElementById('box-image').src = box.imagem
-        ? `http://localhost:8080${box.imagem}` 
+        ? `https://projeto-integrador-ii-u48l.onrender.com${box.imagem}` 
         : '../imgs/TáNaBox-logo.svg';
     document.getElementById('box-numero').textContent = box.numero_box;
     document.getElementById('box-categoria').textContent = box.categoria;
@@ -70,7 +70,7 @@ return;
 
     const boxId = getIdFromUrl();
 
-    const result = await fetch('http://localhost:8080/favoritos', {
+    const result = await fetch('https://projeto-integrador-ii-u48l.onrender.com/favoritos', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

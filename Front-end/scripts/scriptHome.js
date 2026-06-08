@@ -2,7 +2,7 @@ let allBoxes = [];
 
 async function getBoxes() {
     try {
-        const result = await fetch('http://localhost:8080/boxes/all');
+        const result = await fetch('https://projeto-integrador-ii-u48l.onrender.com/boxes/all');
         const boxes = await result.json();
 
         allBoxes = boxes;
@@ -20,7 +20,7 @@ async function getBoxes() {
                 <div class="box-fav">
                     <i class="fa-solid fa-box"></i>
                 </div>
-                <img src="http://localhost:8080${box.imagem}" class="box-image" alt="">
+                <img src="https://projeto-integrador-ii-u48l.onrender.com${box.imagem}" class="box-image" alt="">
                 <p class="box-number">Box ${box.numero_box || ''}</p>
                 <h3 class="box-title">${box.nome_box || ''}</h3>
                 <span class="box-description">${box.descricao || ''}</span>
@@ -58,7 +58,7 @@ function filterBoxes() {
             <div class="box-fav">
                 <i class="fa-solid fa-box"></i>
             </div>
-            <img src="http://localhost:8080${box.imagem}" class="box-image" alt="">
+            <img src="https://projeto-integrador-ii-u48l.onrender.com${box.imagem}" class="box-image" alt="">
             <p class="box-number">Box ${box.numero_box || ''}</p>
             <h3 class="box-title">${box.nome_box || ''}</h3>
             <span class="box-description">${box.descricao || ''}</span>

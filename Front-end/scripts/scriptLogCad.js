@@ -72,7 +72,7 @@ function initLogin() {
     } 
 
     try {
-      var out = await postJson('http://localhost:8080/users/login', {
+      var out = await postJson('https://projeto-integrador-ii-u48l.onrender.com/users/login', {
         email: email,
         senha: senha,
       });
@@ -86,7 +86,7 @@ function initLogin() {
     } catch (err) {
       btn.classList.remove('loading');
       btn.disabled = false;
-      alert('Sem conexão. Confira se o back-end está em http://localhost:8080');
+      alert('Sem conexão. Confira se o back-end está em https://projeto-integrador-ii-u48l.onrender.com');
     }
   });
 }
@@ -125,7 +125,7 @@ function initRegister() {
       submitBtn.innerHTML = 'Carregando...';
 
     try {
-      var reg = await postJson('http://localhost:8080/users/register', {
+      var reg = await postJson('https://projeto-integrador-ii-u48l.onrender.com/users/register', {
         nome: document.getElementById('name').value.trim(),
         email: email,
         senha: senha,
@@ -135,7 +135,7 @@ function initRegister() {
       if (reg.data.nome) localStorage.setItem(LS.nome, reg.data.nome);
       localStorage.setItem(LS.tipo, tipo);
 
-      var log = await postJson('http://localhost:8080/users/login', { email: email, senha: senha });
+      var log = await postJson('https://projeto-integrador-ii-u48l.onrender.com/users/login', { email: email, senha: senha });
       if (!log.ok || !log.data.token) {
         alert('Conta criada. Entre manualmente.');
         location.href = 'login.html';
@@ -144,7 +144,7 @@ function initRegister() {
       saveSession(log.data.token);
       location.href = 'home.html';
     } catch (err) {
-      alert('Sem conexão. Confira se o back-end está em http://localhost:8080');
+      alert('Sem conexão. Confira se o back-end está em https://projeto-integrador-ii-u48l.onrender.com');
     }
   });
 }
