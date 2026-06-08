@@ -7,6 +7,14 @@ const favoritosController = require("../controllers/favoritosController");
 
 const routes = Router();
 
+routes.get("/", (req, res) => {
+    res.send("Backend TáNaBox online");
+});
+
+routes.get("/teste", (req, res) => {
+    res.send("API funcionando");
+});
+
 //Usuário
 routes.get("/users/all", userController.getAllUsers);
 routes.post("/users/register", userController.registerUser);
