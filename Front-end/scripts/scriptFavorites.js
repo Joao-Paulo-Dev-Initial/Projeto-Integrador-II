@@ -30,7 +30,7 @@ async function getFavorites() {
 
         card.innerHTML = `
             <div class="box-fav"><i class="fa-solid fa-bookmark"></i></div>
-            <img src="hhttps://projeto-integrador-ii-u48l.onrender.com${fav.imagem}" class="box-image">
+            <img src="https://projeto-integrador-ii-u48l.onrender.com${fav.imagem}" class="box-image">
             <p class="box-number">Box ${fav.numero_box || ''}</p>
             <h3 class="box-title">${fav.nome_box}</h3>
             <span class="box-description">Observação: ${fav.observacao}</span>
