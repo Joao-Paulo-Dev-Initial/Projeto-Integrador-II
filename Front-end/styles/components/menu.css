@@ -141,8 +141,15 @@
 }
 
 @media screen and (max-width: 600px) {
+
+    #menu {
+        padding: 20px 10px;
+    }
+
     #boxes {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        justify-content: center;
+        gap: 200px;
     }
 
     #menu .selection-subtitle {

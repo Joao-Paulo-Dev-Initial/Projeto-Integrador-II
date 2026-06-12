@@ -202,15 +202,47 @@
     }
 
     .filter-input {
-        width: 90%;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .filter-input input {
+        min-width: 0;
     }
 
     .select-wrapper {
-        width: 90%;
+        width: 100%;
+        max-width: 320px;
     }
 
     #categoryFilter {
         width: 100%;
     }
+
+    #menu-card {
+    width: 95%;
+    max-width: 95%;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+#menu-card .section-title {
+    font-size: 2rem;
+}
+
+#menu-card .section-subtitle {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+#cta {
+    padding-bottom: 40px;
+}
+
+#cta_buttons {
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
 
 }
