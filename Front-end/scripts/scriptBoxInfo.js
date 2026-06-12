@@ -14,7 +14,7 @@ async function getBoxInfo() {
     document.getElementById('box-title').textContent = box.nome_box;
     document.getElementById('box-descricao').textContent = box.descricao;
     document.getElementById('box-image').src = box.imagem
-        ? `https://projeto-integrador-ii-u48l.onrender.com${box.imagem}` 
+        ? box.imagem 
         : '../imgs/TáNaBox-logo.svg';
     document.getElementById('box-numero').textContent = box.numero_box;
     document.getElementById('box-categoria').textContent = box.categoria;

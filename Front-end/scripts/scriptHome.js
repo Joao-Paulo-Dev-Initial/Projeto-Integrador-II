@@ -20,7 +20,7 @@ async function getBoxes() {
                 <div class="box-fav">
                     <i class="fa-solid fa-box"></i>
                 </div>
-                <img src="https://projeto-integrador-ii-u48l.onrender.com${box.imagem}" class="box-image" alt="">
+                <img src="${box.imagem}" class="box-image" alt="">
                 <p class="box-number">Box ${box.numero_box || ''}</p>
                 <h3 class="box-title">${box.nome_box || ''}</h3>
                 <span class="box-description">${box.descricao || ''}</span>

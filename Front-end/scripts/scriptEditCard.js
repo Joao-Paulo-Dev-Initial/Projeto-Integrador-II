@@ -96,7 +96,7 @@ async function loadMyBox() {
 
         // imagem (se tiver)
         if (box.imagem) {
-            preview.src = `https://projeto-integrador-ii-u48l.onrender.com${box.imagem}`;
+            preview.src = box.imagem;
         } else {
             preview.src = '../imgs/TáNaBox-logo.svg';
         }

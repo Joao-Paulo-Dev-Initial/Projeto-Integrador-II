@@ -55,8 +55,8 @@ async function createBox(request, reply) {
     }
 
     const imageUrl = request.file
-      ? `/uploads/${request.file.filename}`
-      : undefined;
+      ? request.file.path
+      : null;
     
     const newBox = await boxes.createBox({
       numero_box,
@@ -82,7 +82,7 @@ async function updateBox(request, reply) {
     const { id } = request.params;
 
     const imageUrl = request.file
-      ? `/uploads/${request.file.filename}`
+      ? request.file.path
       : null;
 
     const updatedBox = await boxes.updateBox(id, {

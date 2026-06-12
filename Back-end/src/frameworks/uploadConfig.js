@@ -1,24 +1,13 @@
 const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinary = require("./cloudinaryConfig");
 
-const uploadPath = path.join(__dirname, "uploads");
-
-if(!fs.existsSync(uploadPath)) {
-    fs.mkdirSync(uploadPath, {recursive: true});
-}
-
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, uploadPath);
-    },
-    filename: (req, file, cb) => {
-        const ext = path.extname(file.originalname);
-        const fileName = Date.now() + ext;
-        cb(null, fileName);
+const storage = new CloudinaryStorage({
+    cloudinary,
+    params: {
+        folder: "tanabox",
+        allowed_formats: ["jpg", "jpeg", "png", "webp"]
     }
 });
-
-const upload = multer({storage});
 
 module.exports = upload;
