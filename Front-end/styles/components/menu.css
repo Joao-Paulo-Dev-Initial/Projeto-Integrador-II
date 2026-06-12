@@ -149,7 +149,7 @@
     #boxes {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         justify-content: center;
-        gap: 200px;
+        gap: 20px;
     }
 
     #menu .selection-subtitle {
